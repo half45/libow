@@ -1,0 +1,4 @@
+avr-gcc -Os -mmcu=atmega8 main.c onewire.c -DF_CPU=8000000UL -std=gnu99
+avr-objcopy -O ihex a.out main.hex
+avr-size main.hex
+sudo avrdude -V -c usbasp -p atmega8 -U flash:w:main.hex:i
