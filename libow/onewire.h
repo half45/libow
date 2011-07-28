@@ -15,12 +15,12 @@
 
 #define OW_RECOVERY_TIME 10 /* usec */
 
-extern uint8_t ow_reset(void);
+uint8_t ow_reset(void);
 
-extern uint8_t ow_write(uint8_t b);
-extern uint8_t ow_read(void);
-extern uint8_t ow_bit(uint8_t b);
+uint8_t ow_write(uint8_t b);
+uint8_t ow_read(void);
+uint8_t ow_bit(uint8_t b);
 
-extern uint8_t ow_rom_search( uint8_t diff, uint8_t *id );
-extern uint8_t ow_rom_search_an187( uint8_t diff, uint8_t *id );
-extern void ow_rom_match( uint8_t *id );
+uint8_t ow_rom_search( uint8_t diff, uint8_t *id );
+uint8_t ow_rom_search_an187( uint8_t diff, uint8_t *id );
+void ow_rom_match( uint8_t *id );
