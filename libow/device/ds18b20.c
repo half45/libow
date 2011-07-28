@@ -15,6 +15,7 @@
 
 #include "conf.h"
 #include "onewire.h"
+#include "crc8.h"
 #include "device/common.h"
 #include "device/ds18b20.h"
 
@@ -25,6 +26,9 @@ uint8_t ds18b20_convert_all(void)
 	ow_write(0x44);
 	return 1;
 }
+
+extern void USART_Send_hex( char *data, uint8_t len );
+
 
 uint8_t ds18b20_search_read(uint8_t diff, uint8_t *sp)
 {

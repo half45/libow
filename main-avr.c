@@ -23,6 +23,7 @@
 #include "onewire.h"
 #include "device/common.h"
 #include "device/ds18b20.h"
+#include "crc8.h"
 
 #define ON(port, pin) (port |= _BV(pin))
 #define OFF(port, pin) (port &= ~_BV(pin))
@@ -93,6 +94,9 @@ int main(void) {
 		{
 			diff = ds18b20_search_read(diff, sp);
 			itoa(ds18b20_raw_to_celsius(sp), buf, 10);
+			if( crc8(sp, DS18X20_SP_SIZE) ) USART_Send("crc error");
+			else USART_Send("crc ok");
+			USART_Transmit(' ');
 			USART_Send( buf );
 			USART_Transmit('\n');
 		}
